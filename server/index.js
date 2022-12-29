@@ -3,8 +3,13 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose'
 import cors from 'cors';
 
+import postRoutes from './routes/posts.js';
+
 // setting up our app
 const app = express();
+
+// every route will start with /posts prefix
+app.use('/posts', postRoutes); // every route inside postRoutes will start from posts
 
 app.use(bodyParser.json({ limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}))
@@ -18,4 +23,3 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
     .catch((error) => console.log(error.message));
 
-    
