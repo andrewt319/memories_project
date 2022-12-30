@@ -7,6 +7,6 @@ const router = express.Router();
 
 // reached by localhost:3000/posts
 router.get('/', getPosts);
-router.get('/', createPosts);
+router.post('/', createPosts);
 
 export default router;
