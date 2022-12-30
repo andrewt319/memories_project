@@ -8,12 +8,12 @@ import postRoutes from './routes/posts.js';
 // setting up our app
 const app = express();
 
-// every route will start with /posts prefix
-app.use('/posts', postRoutes); // every route inside postRoutes will start from posts
-
 app.use(bodyParser.json({ limit: "30mb", extended: true}))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}))
 app.use(cors());
+
+// every route will start with /posts prefix
+app.use('/posts', postRoutes); // every route inside postRoutes will start from posts
 
 const CONNECTION_URL = 'mongodb+srv://admin:admin@cluster0.chvkipp.mongodb.net/?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 3000;
